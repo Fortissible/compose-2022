@@ -13,6 +13,7 @@ package com.example.composechampions2k22submission.home
     import com.example.composechampions2k22submission.MainScreen
     import com.example.composechampions2k22submission.core.ui.route.Screen
     import com.example.composechampions2k22submission.detail.DetailViewModel
+    import com.example.composechampions2k22submission.utils.DummyData
     import com.example.composechampions2k22submission.wishlist.WishListViewModel
     import junit.framework.Assert.assertEquals
     import org.junit.Before

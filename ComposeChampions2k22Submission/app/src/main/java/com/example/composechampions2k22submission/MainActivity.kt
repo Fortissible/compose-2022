@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.asLiveData
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -61,7 +62,8 @@ class MainActivity : AppCompatActivity() {
             MainScreen(
                 homeViewModel = homeViewModel,
                 detailViewModel = detailViewModel,
-                wishListViewModel = wishListViewModel
+                wishListViewModel = wishListViewModel,
+                navController = rememberNavController()
             )
         }
     }
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController(),
+    navController: NavHostController,
     homeViewModel: HomeViewModel,
     detailViewModel: DetailViewModel,
     wishListViewModel: WishListViewModel,
@@ -208,7 +210,7 @@ fun BottomBar(
     modifier: Modifier = Modifier,
 ){
     BottomNavigation(
-        modifier = modifier
+        modifier = modifier,
     ) {
         val navBackStackEntry = navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry.value?.destination?.route

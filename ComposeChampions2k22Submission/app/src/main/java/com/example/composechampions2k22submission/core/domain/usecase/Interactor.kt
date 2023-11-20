@@ -25,5 +25,4 @@ class Interactor @Inject constructor(
 
     override fun getAllFavouritedAnime(): Flow<Resource<List<Anime>>> =
         repository.getAllFavouritedAnime()
-
 }

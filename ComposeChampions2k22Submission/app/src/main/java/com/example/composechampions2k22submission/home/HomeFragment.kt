@@ -37,7 +37,7 @@ fun HomeScreen(
         when(uiState?.value){
             is Resource.Error -> {
                 Text(
-                    text = "Sorry, an error happened... :(",
+                    text = "WOI GA ADA KONEKSI",
                     textAlign = TextAlign.Center
                 )
                 Text(

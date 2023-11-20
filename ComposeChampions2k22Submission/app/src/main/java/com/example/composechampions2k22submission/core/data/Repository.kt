@@ -1,15 +1,13 @@
 package com.example.composechampions2k22submission.core.data
 
+import android.util.Log
 import com.example.composechampions2k22submission.core.data.source.local.LocalDataSource
 import com.example.composechampions2k22submission.core.data.source.remote.RemoteDataSource
 import com.example.composechampions2k22submission.core.data.source.remote.network.ApiResponse
 import com.example.composechampions2k22submission.core.domain.model.Anime
 import com.example.composechampions2k22submission.core.domain.repository.IRepository
 import com.example.composechampions2k22submission.utils.DataMapper
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,6 +29,10 @@ class Repository @Inject constructor(
             }
             is ApiResponse.Success -> {
                 val moviesDomain =  DataMapper.currentSeasonAnimeResponseToAnimeDomain(movies.data)
+                Log.d("PRINT ANIME LIST", "List :")
+                moviesDomain.forEach{ anime ->
+                    Log.d("PRINT ANIME", anime.toString())
+                }
                 emit(Resource.Success(moviesDomain))
             }
         }
