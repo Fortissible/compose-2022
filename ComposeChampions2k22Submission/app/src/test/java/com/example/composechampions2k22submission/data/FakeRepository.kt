@@ -1,5 +1,6 @@
 package com.example.composechampions2k22submission.data
 
+import com.example.composechampions2k22submission.core.data.Repository
 import com.example.composechampions2k22submission.core.data.Resource
 import com.example.composechampions2k22submission.core.domain.model.Anime
 import com.example.composechampions2k22submission.core.domain.repository.IRepository
@@ -14,8 +15,12 @@ class FakeRepository : IRepository {
 
     override fun getAnimeCurrentSeasonFromApi(): Flow<Resource<List<Anime>>> = flow {
         emit(Resource.Loading())
-        delay(100)
-        emit(Resource.Success(listAnime))
+        delay(50)
+        try{
+            emit(Resource.Success(listAnime))
+        } catch (e: Exception){
+            emit(Resource.Error("Error Occured"))
+        }
     }
 
     override fun getAnimeDetailFromApi(id: Int): Flow<Resource<Anime>> {
